@@ -38,7 +38,7 @@ export default function IntegrationsSection() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const autoPlayRef = useRef(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const cardsPerSlide = { base: 1, sm: 3 }; // 1 card on mobile, 3 on sm and up
   const totalSlides = {
     base: integrations.length, // 1 card per slide on mobile
