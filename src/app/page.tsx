@@ -5,7 +5,6 @@ import PricingSection from "@/components/Pricing";
 import CtaSection from "@/components/CTA";
 import Footer from "@/components/Footer";
 import AIFeaturesCard from "@/components/AIFeatures";
-import IntegrationsSection from "@/components/Integrations";
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <AIFeaturesCard />
-        <IntegrationsSection />
         <CtaSection />
       </main>
       <Footer />
