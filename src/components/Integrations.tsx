@@ -39,7 +39,8 @@ export default function IntegrationsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  // Change type from NodeJS.Timeout to number for browser compatibility
+  const autoPlayRef = useRef<number | null>(null);
   const cardsPerSlide = { base: 1, sm: 3 }; // 1 card on mobile, 3 on sm and up
 
   // We'll calculate these values after component mounts
@@ -52,35 +53,45 @@ export default function IntegrationsSection() {
   useEffect(() => {
     // Function to check if we're on mobile
     const checkIsMobile = () => {
-      const mobile = window.innerWidth < 640;
-      setIsMobile(mobile);
+      if (typeof window !== "undefined") {
+        const mobile = window.innerWidth < 640;
+        setIsMobile(mobile);
+      }
     };
 
     // Set initial value
     checkIsMobile();
 
     // Add event listener for window resize
-    window.addEventListener("resize", checkIsMobile);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", checkIsMobile);
 
-    // Clean up
-    return () => window.removeEventListener("resize", checkIsMobile);
+      // Clean up
+      return () => window.removeEventListener("resize", checkIsMobile);
+    }
   }, []);
 
-  // Auto-play functionality
+  // Auto-play functionality with handleNext defined within useEffect
   useEffect(() => {
-    if (isAutoPlaying) {
-      autoPlayRef.current = setInterval(() => {
-        handleNext();
-      }, 3000); // Change slide every 3 seconds
+    const handleNextSlide = () => {
+      setCurrentIndex((prevIndex) => {
+        const maxIndex = isMobile ? totalSlides.base - 1 : totalSlides.sm - 1;
+        return prevIndex < maxIndex ? prevIndex + 1 : 0;
+      });
+    };
+
+    if (isAutoPlaying && typeof window !== "undefined") {
+      // Use window.setInterval and store as number
+      autoPlayRef.current = window.setInterval(handleNextSlide, 3000);
     }
 
     return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
+      if (autoPlayRef.current !== null && typeof window !== "undefined") {
+        window.clearInterval(autoPlayRef.current);
         autoPlayRef.current = null;
       }
     };
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isMobile, totalSlides.base, totalSlides.sm]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
@@ -156,11 +167,13 @@ export default function IntegrationsSection() {
           </div>
         </div>
 
-        {/* Carousel indicators - Safely use client-side rendering */}
+        {/* Carousel indicators - Safely use client-side rendering with a conditional */}
         <div className="flex justify-center mt-4 sm:mt-6 gap-1.5 sm:gap-2">
           {typeof window !== "undefined" &&
             Array.from({
-              length: isMobile ? totalSlides.base : totalSlides.sm,
+              length: isMobile
+                ? integrations.length
+                : Math.ceil(integrations.length / cardsPerSlide.sm),
             }).map((_, index) => (
               <button
                 key={index}
