@@ -37,7 +37,7 @@ export default function HeroSection() {
             {/* Action buttons - centered with responsive sizing */}
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Button className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6">
-                Get Started
+                Comienza ahora
               </Button>
             </div>
           </div>
