@@ -2,30 +2,6 @@
 
 import { useState } from "react";
 import { Shield, Zap, Smartphone, Scale, Clock, Database } from "lucide-react";
-const features2 = [
-  {
-    name: "Análisis Legal Experto",
-    description:
-      "Nuestra IA analiza miles de casos legales y precedentes para proporcionar asesoramiento preciso adaptado a tu situación.",
-    icon: Scale,
-  },
-  {
-    name: "Base de Datos Completa",
-    description:
-      "Accede a información de una amplia base de datos de leyes, regulaciones y precedentes de casos en múltiples jurisdicciones.",
-    icon: Database,
-  },
-  {
-    name: "Análisis Inteligente de Documentos",
-    description:
-      "Sube contratos y documentos legales para revisión por IA y obtén explicaciones en lenguaje sencillo de términos complejos.",
-  },
-  {
-    name: "Perspectivas Predictivas",
-    description:
-      "Recibe evaluaciones basadas en probabilidades de posibles resultados legales a partir de datos históricos de casos.",
-  },
-];
 
 const features = [
   {
@@ -37,17 +13,17 @@ const features = [
     hoverColor: "bg-blue-500",
   },
   {
-    name: "Perspectivas Predictivas",
+    name: "Automatización de Tareas",
     description:
-      "Recibe evaluaciones basadas en probabilidades de posibles resultados legales a partir de datos históricos de casos.",
+      "Reduce costos operativos y optimiza la eficiencia mediante la automatización de tareas repetitivas.",
     icon: Zap,
     color: "bg-orange-500",
     hoverColor: "bg-orange-500",
   },
   {
-    name: "Diseño Responsivo",
+    name: "Fácil integración",
     description:
-      "Interfaces totalmente adaptables que funcionan a la perfección en cualquier tamaño de pantalla.",
+      "Interfaces totalmente adaptables que funcionan a la perfección en cualquier plataforma.",
     icon: Smartphone,
     color: "bg-green-500",
     hoverColor: "bg-green-500",

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Scale, CheckCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CtaSection() {
   const [isHovered, setIsHovered] = useState(false);
@@ -110,12 +111,13 @@ export default function CtaSection() {
                 }`}
               ></div>
               <Button className="relative bg-white text-teal-700 hover:text-teal-200 text-lg px-8 py-6 flex items-center justify-center space-x-2 transition-all duration-300 hover:shadow-xl w-full sm:w-auto">
-                <span>Comience Ahora</span>
-                <ArrowRight
-                  className={`h-5 w-5 transition-transform duration-300 ${
-                    isHovered ? "translate-x-1" : ""
-                  }`}
-                />
+                <Link
+                  href="https://calendly.com/adiutorlegalassistant"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Comience Ahora</span>
+                </Link>
               </Button>
             </div>
           </div>

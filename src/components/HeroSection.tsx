@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkle } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -29,16 +30,18 @@ export default function HeroSection() {
 
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
               Adiutor utiliza IA avanzada para proporcionar orientación legal
-              instantánea y precisa para particulares y empresas. Obtenga
-              asesoramiento jurídico experto sin los elevados costes ni los
-              largos tiempos de espera.
+              instantánea y precisa para particulares y empresas. Automatiza
+              tareas repetitivas, brinda una mayor organización y optimiza la
+              eficiencia mediante el asistente virtual.
             </p>
 
             {/* Action buttons - centered with responsive sizing */}
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <Button className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6">
-                Comienza ahora
-              </Button>
+              <Link href="#features">
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6">
+                  Comienza ahora
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

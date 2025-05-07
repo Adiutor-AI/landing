@@ -50,15 +50,11 @@ export default function Navbar() {
             >
               Características
             </Link>
-            <Link
-              href="#integrations"
-              className="text-gray-600 hover:text-teal-600 transition-colors"
-            >
-              Integraciones
+            <Link href="mailto:adiutorlegalassistant@gmail.com">
+              <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+                Contacto
+              </Button>
             </Link>
-            <Button className="bg-teal-600 hover:bg-teal-700 text-white">
-              Contacto
-            </Button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -91,13 +87,7 @@ export default function Navbar() {
             >
               Características
             </Link>
-            <Link
-              href="#integrations"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Integraciones
-            </Link>
+
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-5">
                 <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white">
