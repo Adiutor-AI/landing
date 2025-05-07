@@ -38,15 +38,36 @@ export default function IntegrationsSection() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const cardsPerSlide = { base: 1, sm: 3 }; // 1 card on mobile, 3 on sm and up
-  const totalSlides = {
-    base: integrations.length, // 1 card per slide on mobile
-    sm: Math.ceil(integrations.length / cardsPerSlide.sm), // 3 cards per slide on desktop
-  };
 
+  // We'll calculate these values after component mounts
+  const [totalSlides, setTotalSlides] = useState({
+    base: integrations.length,
+    sm: Math.ceil(integrations.length / cardsPerSlide.sm),
+  });
+
+  // Handle window resize and initial check
   useEffect(() => {
-    // Auto-play functionality
+    // Function to check if we're on mobile
+    const checkIsMobile = () => {
+      const mobile = window.innerWidth < 640;
+      setIsMobile(mobile);
+    };
+
+    // Set initial value
+    checkIsMobile();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIsMobile);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
+
+  // Auto-play functionality
+  useEffect(() => {
     if (isAutoPlaying) {
       autoPlayRef.current = setInterval(() => {
         handleNext();
@@ -56,14 +77,14 @@ export default function IntegrationsSection() {
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
       }
     };
-  }, [currentIndex, isAutoPlaying]);
+  }, [isAutoPlaying]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
-      const maxIndex =
-        window.innerWidth < 640 ? totalSlides.base - 1 : totalSlides.sm - 1;
+      const maxIndex = isMobile ? totalSlides.base - 1 : totalSlides.sm - 1;
       return prevIndex < maxIndex ? prevIndex + 1 : 0;
     });
   };
@@ -73,7 +94,6 @@ export default function IntegrationsSection() {
 
   // Calculate the translate percentage based on screen size
   const getTranslateX = () => {
-    const isMobile = window.innerWidth < 640;
     const slideWidth = isMobile ? 100 : 100 / cardsPerSlide.sm;
     return currentIndex * slideWidth;
   };
@@ -136,21 +156,22 @@ export default function IntegrationsSection() {
           </div>
         </div>
 
-        {/* Carousel indicators */}
+        {/* Carousel indicators - Safely use client-side rendering */}
         <div className="flex justify-center mt-4 sm:mt-6 gap-1.5 sm:gap-2">
-          {Array.from({
-            length: window.innerWidth < 640 ? totalSlides.base : totalSlides.sm,
-          }).map((_, index) => (
-            <button
-              key={index}
-              className={`h-1.5 sm:h-2 rounded-full transition-all focus:outline-none ${
-                index === currentIndex
-                  ? "w-6 sm:w-8 bg-teal-600"
-                  : "w-1.5 sm:w-2 bg-gray-300"
-              }`}
-              onClick={() => setCurrentIndex(index)}
-            />
-          ))}
+          {typeof window !== "undefined" &&
+            Array.from({
+              length: isMobile ? totalSlides.base : totalSlides.sm,
+            }).map((_, index) => (
+              <button
+                key={index}
+                className={`h-1.5 sm:h-2 rounded-full transition-all focus:outline-none ${
+                  index === currentIndex
+                    ? "w-6 sm:w-8 bg-teal-600"
+                    : "w-1.5 sm:w-2 bg-gray-300"
+                }`}
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
         </div>
       </div>
     </section>
