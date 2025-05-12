@@ -5,12 +5,20 @@ import { Shield, Zap, Smartphone, Scale, Clock, Database } from "lucide-react";
 
 const features = [
   {
-    name: "Privacidad Protegida",
+    name: "Análisis Legal Experto",
     description:
-      "Tu información está encriptada y segura. Nunca compartimos tus datos con terceros.",
-    icon: Shield,
-    color: "bg-blue-500",
-    hoverColor: "bg-blue-500",
+      "Nuestra IA analiza miles de casos legales y precedentes para proporcionar asesoramiento preciso adaptado a tu situación.",
+    icon: Scale,
+    color: "bg-purple-500",
+    hoverColor: "bg-purple-500",
+  },
+  {
+    name: "Base de datos completa",
+    description:
+      "Accede a información de una amplia base de datos de leyes, regulaciones y precedentes de casos en múltiples jurisdicciones.",
+    icon: Database,
+    color: "bg-yellow-500",
+    hoverColor: "bg-yellow-500",
   },
   {
     name: "Automatización de Tareas",
@@ -21,6 +29,15 @@ const features = [
     hoverColor: "bg-orange-500",
   },
   {
+    name: "Privacidad Protegida",
+    description:
+      "Tu información está encriptada y segura. Nunca compartimos tus datos con terceros.",
+    icon: Shield,
+    color: "bg-blue-500",
+    hoverColor: "bg-blue-500",
+  },
+
+  {
     name: "Fácil integración",
     description:
       "Interfaces totalmente adaptables que funcionan a la perfección en cualquier plataforma.",
@@ -28,14 +45,7 @@ const features = [
     color: "bg-green-500",
     hoverColor: "bg-green-500",
   },
-  {
-    name: "Análisis Legal Experto",
-    description:
-      "Nuestra IA analiza miles de casos legales y precedentes para proporcionar asesoramiento preciso adaptado a tu situación.",
-    icon: Scale,
-    color: "bg-purple-500",
-    hoverColor: "bg-purple-500",
-  },
+
   {
     name: "Disponibilidad 24/7",
     description:
@@ -43,14 +53,6 @@ const features = [
     icon: Clock,
     color: "bg-red-500",
     hoverColor: "bg-red-500",
-  },
-  {
-    name: "Base de datos completa",
-    description:
-      "Accede a información de una amplia base de datos de leyes, regulaciones y precedentes de casos en múltiples jurisdicciones.",
-    icon: Database,
-    color: "bg-yellow-500",
-    hoverColor: "bg-yellow-500",
   },
 ];
 
