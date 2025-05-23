@@ -15,7 +15,7 @@ export default function Footer() {
             <div className="mt-6 flex space-x-6">
               <Link href="#" className="text-gray-400 hover:text-teal-500">
                 <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
+                <span className="sr-only">X</span>
               </Link>
               <Link href="#" className="text-gray-400 hover:text-teal-500">
                 <Facebook className="h-5 w-5" />
@@ -38,7 +38,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
-              Product
+              Producto
             </h3>
             <ul className="mt-4 space-y-4">
               <li>
@@ -46,7 +46,7 @@ export default function Footer() {
                   href="#features"
                   className="text-base text-gray-400 hover:text-teal-500"
                 >
-                  Features
+                  Características
                 </Link>
               </li>
               <li>
@@ -70,7 +70,7 @@ export default function Footer() {
                   href="#integrations"
                   className="text-base text-gray-400 hover:text-teal-500"
                 >
-                  Integrations
+                  Integraciones
                 </Link>
               </li>
             </ul>
@@ -78,40 +78,24 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
-              Company
+              Nosotros
             </h3>
             <ul className="mt-4 space-y-4">
               <li>
-                <Link
-                  href="#"
-                  className="text-base text-gray-400 hover:text-teal-500"
-                >
-                  About
-                </Link>
+                <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  United States of America
+                </h3>
+                <p className="text-base text-gray-400 ">
+                  3408 W. 84 St. Hialeah, FL 33018
+                </p>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-base text-gray-400 hover:text-teal-500"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-base text-gray-400 hover:text-teal-500"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  className="text-base text-gray-400 hover:text-teal-500"
-                >
-                  Contact
-                </Link>
+                <h3 className="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                  Argentina
+                </h3>
+                <p className="text-base text-gray-400 ">
+                  San Juan 2271, Rosario, Santa Fe, Argentina.
+                </p>
               </li>
             </ul>
           </div>
@@ -119,8 +103,8 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-gray-800 pt-8">
           <p className="text-base text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} Adiutor AI Legal Services. All
-            rights reserved.
+            &copy; {new Date().getFullYear()} Adiutor AI Servicios Legales.
+            Todos los derechos reservados.
           </p>
           <div className="mt-4 flex justify-center space-x-6">
             <Link href="#" className="text-gray-400 hover:text-teal-500">
