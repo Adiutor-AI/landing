@@ -37,8 +37,22 @@ const basePlans = [
   },
 ];
 
+// Links de pago de Stripe
+const stripeLinks = {
+  monthly: "https://buy.stripe.com/aFa28s92k4Qg36l2Fte7m00",
+  yearly: "https://buy.stripe.com/5kQ6oI6UcciIfT71Bpe7m01",
+};
+
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(true);
+
+  const handlePlanClick = (planName: string) => {
+    if (planName === "PRO") {
+      const stripeUrl = isYearly ? stripeLinks.yearly : stripeLinks.monthly;
+      window.open(stripeUrl, "_blank", "noopener,noreferrer");
+    } else {
+    }
+  };
 
   return (
     <section id="pricing" className="py-24 bg-gray-50">
@@ -133,6 +147,7 @@ export default function PricingSection() {
                   </ul>
                   <div className="mt-8">
                     <Button
+                      onClick={() => handlePlanClick(plan.name)}
                       className={`w-full py-6 ${
                         plan.highlighted
                           ? "bg-teal-600 hover:bg-teal-700 text-white"
